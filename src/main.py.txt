@@ -1,0 +1,32 @@
+import pandas as pd
+import os
+
+print("Iniciando sistema de vendas...")
+
+# Caminho até o arquivo Excel
+caminho_arquivo = os.path.join(
+    os.path.dirname(__file__),
+    "..",
+    "data",
+    "vendas.xlsx"
+)
+
+print("Caminho do arquivo:", caminho_arquivo)
+
+# Ler o arquivo Excel
+df = pd.read_excel(caminho_arquivo)
+
+print("\nDados carregados:")
+print(df)
+
+# Criar coluna de total
+df["Total"] = df["Quantidade"] * df["Preco"]
+
+print("\nDados com total:")
+print(df)
+
+# Faturamento total
+faturamento_total = df["Total"].sum()
+
+print("\nFaturamento total:")
+print(faturamento_total)
